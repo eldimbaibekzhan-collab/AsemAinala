@@ -15,8 +15,9 @@ jobs:
         with:
           gradle-version: '8.1.1'
       - run: cd AsemAinala && gradle wrapper --gradle-version 8.1.1
+      - run: sed -i 's/compileSdk 34/compileSdk 33/g' AsemAinala/app/build.gradle
+      - run: sed -i 's/targetSdk 34/targetSdk 33/g' AsemAinala/app/build.gradle
       - run: cd AsemAinala && chmod +x gradlew && ./gradlew assembleDebug
-      - run: sed -i 's/compileSdk 34/compileSdk 33/' AsemAinala/app/build.gradle && sed -i 's/targetSdk 34/targetSdk 33/' AsemAinala/app/build.gradle
       - uses: actions/upload-artifact@v4
         with:
           name: APK
