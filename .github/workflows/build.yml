@@ -9,7 +9,7 @@ jobs:
         with:
           java-version: '17'
           distribution: 'temurin'
-      - uses: actions/setup-gradle@v3
+      
       - run: unzip AsemAinala_source.zip
       - run: |
           cd AsemAinala
