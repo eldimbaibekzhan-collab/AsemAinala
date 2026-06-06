@@ -1,4 +1,3 @@
-
 name: Build APK
 on: [push, workflow_dispatch]
 jobs:
@@ -11,8 +10,8 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
       - run: unzip AsemAinala_source.zip
-      - run: printf '#!/bin/sh\nexec java -jar gradle/wrapper/gradle-wrapper.jar "$@"\n' > AsemAinala/gradlew && chmod +x AsemAinala/gradlew
-      - run: cd AsemAinala && chmod +x gradlew && ./gradlew assembleDebug -x test
+      - run: cd AsemAinala && gradle wrapper
+      - run: cd AsemAinala && chmod +x gradlew && ./gradlew assembleDebug
       - uses: actions/upload-artifact@v4
         with:
           name: APK
