@@ -11,7 +11,7 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
       - run: unzip AsemAinala_source.zip
-      - run: sed -i 's/"-Xmx64m" "-Xms64m"//g' AsemAinala/gradlew && sed -i 's/-Xmx[0-9]*[mMgG]//g' AsemAinala/gradlew && sed -i 's/-Xms[0-9]*[mMgG]//g' AsemAinala/gradlew
+      - run: printf '#!/bin/sh\nexec java -jar gradle/wrapper/gradle-wrapper.jar "$@"\n' > AsemAinala/gradlew && chmod +x AsemAinala/gradlew
       - run: cd AsemAinala && chmod +x gradlew && ./gradlew assembleDebug -x test
       - uses: actions/upload-artifact@v4
         with:
