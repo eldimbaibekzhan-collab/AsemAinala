@@ -10,8 +10,8 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
       - run: unzip AsemAinala_source.zip
-      - run: cd AsemAinala && gradle wrapper --gradle-version 8.0
-      - run: cd AsemAinala && chmod +x gradlew && ./gradlew assembleDebug
+      - run: cd AsemAinala && gradle wrapper --gradle-version 8.0 --warning-mode none
+      - run: cd AsemAinala && chmod +x gradlew && ./gradlew assembleDebug --warning-mode none
       - uses: actions/upload-artifact@v4
         with:
           name: APK
